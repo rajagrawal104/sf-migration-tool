@@ -1,30 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
-    <key>CFBundleDisplayName</key>
-    <string>Aura to LWC Converter</string>
-    <key>CFBundleExecutable</key>
-    <string>aura-lwc-converter</string>
-    <key>CFBundleIconFile</key>
-    <string>app.icns</string>
-    <key>CFBundleIdentifier</key>
-    <string>com.salesforce.aura-lwc-converter</string>
-    <key>CFBundleInfoDictionaryVersion</key>
-    <string>6.0</string>
-    <key>CFBundleName</key>
-    <string>aura-lwc-converter</string>
-    <key>CFBundlePackageType</key>
-    <string>APPL</string>
-    <key>CFBundleShortVersionString</key>
-    <string>1.0.0</string>
-    <key>CFBundleVersion</key>
-    <string>1</string>
-    <key>LSMinimumSystemVersion</key>
-    <string>10.13.0</string>
-    <key>NSHighResolutionCapable</key>
-    <true/>
-</dict>
-</plist> 
+version https://git-lfs.github.com/spec/v1
+oid sha256:1cb077c288da69cd36cc7b29b61b87ea0336e03479ac886e0722c8fbd4525fe3
+size 996
