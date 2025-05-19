@@ -1,0 +1,38 @@
+.slds-card {
+    border: 1px solid #d8dde6;
+    border-radius: 0.25rem;
+    background: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+    padding: 1rem;
+}
+
+.slds-card__header {
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid #f3f2f2;
+}
+
+.slds-card__body {
+    padding: 1rem;
+}
+
+.slds-item {
+    padding: 0.75rem 0;
+}
+
+.slds-text-heading_small {
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #16325c;
+}
+
+.slds-text-body_regular {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: #54698d;
+}
+
+.slds-scrollable_y {
+    max-height: 300px;
+    overflow-y: auto;
+} 

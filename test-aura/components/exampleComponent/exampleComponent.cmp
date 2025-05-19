@@ -1,0 +1,59 @@
+<aura:component description="Example Component" implements="force:appHostable,flexipage:availableForAllPageTypes">
+    <aura:attribute name="searchTerm" type="String" default=""/>
+    <aura:attribute name="contacts" type="Contact[]"/>
+    <aura:attribute name="isLoading" type="Boolean" default="false"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="search" event="c:SearchEvent" action="{!c.handleSearch}"/>
+    
+    <div class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center">
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                        <span>Contact Search</span>
+                    </h2>
+                </div>
+            </header>
+        </div>
+        
+        <div class="slds-card__body slds-card__body_inner">
+            <lightning:input 
+                type="search"
+                label="Search Contacts"
+                value="{!v.searchTerm}"
+                onchange="{!c.handleSearchTermChange}"/>
+                
+            <aura:if isTrue="{!v.isLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium"/>
+            </aura:if>
+            
+            <aura:if isTrue="{!not(empty(v.contacts))}">
+                <div class="slds-scrollable_y" style="height: 300px;">
+                    <ul class="slds-has-dividers_bottom-space">
+                        <aura:iteration items="{!v.contacts}" var="contact">
+                            <li class="slds-item">
+                                <div class="slds-grid slds-gutters">
+                                    <div class="slds-col">
+                                        <p class="slds-text-heading_small">
+                                            {!contact.Name}
+                                        </p>
+                                        <p class="slds-text-body_regular">
+                                            {!contact.Email}
+                                        </p>
+                                    </div>
+                                    <div class="slds-col slds-no-flex slds-align-middle">
+                                        <lightning:button 
+                                            label="View Details"
+                                            onclick="{!c.handleViewDetails}"
+                                            data-id="{!contact.Id}"/>
+                                    </div>
+                                </div>
+                            </li>
+                        </aura:iteration>
+                    </ul>
+                </div>
+            </aura:if>
+        </div>
+    </div>
+</aura:component> 
