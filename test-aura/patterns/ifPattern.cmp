@@ -1,0 +1,9 @@
+<aura:component>
+    <aura:attribute name="show" type="Boolean" default="true"/>
+    <aura:if isTrue="{!v.show}">
+        <div>Visible!</div>
+        <aura:set attribute="else">
+            <div>Hidden!</div>
+        </aura:set>
+    </aura:if>
+</aura:component> 

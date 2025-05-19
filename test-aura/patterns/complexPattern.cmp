@@ -1,0 +1,52 @@
+<aura:component controller="ComplexController">
+    <!-- Missing type attribute -->
+    <aura:attribute name="missingType" />
+    
+    <!-- Object type without description -->
+    <aura:attribute name="objectAttr" type="Object" />
+    
+    <!-- Invalid controller reference in default value -->
+    <aura:attribute name="invalidDefault" type="String" default="{!c.getDefault}" />
+    
+    <!-- Complex if-else structure -->
+    <aura:if isTrue="{!v.showFirst}">
+        <div>First condition</div>
+        <aura:set attribute="else">
+            <aura:if isTrue="{!v.showSecond}">
+                <div>Second condition</div>
+                <aura:set attribute="else">
+                    <div>Default condition</div>
+                </aura:set>
+            </aura:if>
+        </aura:set>
+    </aura:if>
+    
+    <!-- Nested iterations -->
+    <aura:iteration items="{!v.outerItems}" var="outerItem">
+        <aura:iteration items="{!v.innerItems}" var="innerItem">
+            <div class="slds-box slds-theme_default">
+                {!outerItem.name} - {!innerItem.name}
+            </div>
+        </aura:iteration>
+    </aura:iteration>
+    
+    <!-- Multiple event handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.data}" action="{!c.handleChange}" />
+    <aura:handler name="click" value="{!this}" action="{!c.handleClick}" />
+    
+    <!-- SLDS with multiple classes -->
+    <div class="slds-grid slds-gutters slds-wrap slds-p-around_medium">
+        <div class="slds-col slds-size_1-of-2">
+            <div class="slds-box slds-theme_default">
+                <aura:unescapedHtml value="{!v.rawHtml}" />
+            </div>
+        </div>
+    </div>
+    
+    <!-- Labels and resources -->
+    <div>
+        <span>{!$Label.c.ComplexLabel}</span>
+        <img src="{!$Resource.complexImage}" />
+    </div>
+</aura:component> 

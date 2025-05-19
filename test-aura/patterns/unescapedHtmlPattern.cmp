@@ -1,0 +1,4 @@
+<aura:component>
+    <aura:attribute name="rawHtml" type="String" default="&lt;strong&gt;Bold!&lt;/strong&gt;"/>
+    <aura:unescapedHtml value="{!v.rawHtml}"/>
+</aura:component> 

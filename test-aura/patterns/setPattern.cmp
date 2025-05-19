@@ -1,0 +1,5 @@
+<aura:component>
+    <aura:set attribute="body">
+        <div>Set Body Content</div>
+    </aura:set>
+</aura:component> 

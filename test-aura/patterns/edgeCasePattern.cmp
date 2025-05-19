@@ -1,0 +1,29 @@
+<aura:component>
+    <!-- Attribute with missing name and type -->
+    <aura:attribute />
+    <!-- Attribute with invalid type -->
+    <aura:attribute name="badType" type="NotAType" />
+    <!-- Attribute with controller reference in default -->
+    <aura:attribute name="controllerDefault" type="String" default="{!c.someMethod}" />
+    <!-- Deeply nested if/iteration/set -->
+    <aura:if isTrue="{!v.outer}">
+        <aura:iteration items="{!v.list}" var="item">
+            <aura:set attribute="body">
+                <aura:if isTrue="{!item.flag}">
+                    <div class="slds-box slds-theme_alert-texture">
+                        <span>{!$Label.c.DeepLabel}</span>
+                        <img src="{!$Resource.deepImage}" />
+                    </div>
+                </aura:if>
+            </aura:set>
+        </aura:iteration>
+    </aura:if>
+    <!-- Handler with missing action -->
+    <aura:handler name="init" value="{!this}" />
+    <!-- Handler with invalid action reference -->
+    <aura:handler name="change" value="{!v.data}" action="{!badReference}" />
+    <!-- Unescaped HTML with invalid value -->
+    <aura:unescapedHtml value="{!c.badHtml}" />
+    <!-- SLDS with many classes -->
+    <div class="slds-grid slds-gutters slds-wrap slds-p-around_medium slds-theme_shade slds-theme_alert-texture"></div>
+</aura:component> 

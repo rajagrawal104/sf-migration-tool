@@ -23,7 +23,7 @@ A powerful tool for converting Salesforce Aura components to Lightning Web Compo
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/sf-migration-tool.git
+git clone https://github.com/rajagrawal104/sf-migration-tool.git
 cd sf-migration-tool
 ```
 

@@ -1,0 +1,3 @@
+<aura:component>
+    <div class="slds-box slds-theme_default">Styled with SLDS</div>
+</aura:component> 
