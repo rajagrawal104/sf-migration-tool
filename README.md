@@ -1,220 +1,137 @@
-# Salesforce Aura to LWC Migration Tool
+# Salesforce Aura to LWC Converter
 
-A powerful tool for converting Salesforce Aura components to Lightning Web Components (LWC) with advanced analysis and validation capabilities.
+A powerful tool for converting Salesforce Aura components to Lightning Web Components (LWC) with support for enterprise repositories and batch processing.
 
 ## Features
 
-- **Component Conversion**: Convert Aura components to LWC with high accuracy
-- **Advanced Analysis**: Detailed complexity analysis and maintainability scoring
-- **Pattern Detection**: Automatic detection of Aura patterns and features
-- **Validation Rules**: Comprehensive validation of Aura component structure
-- **Risk Assessment**: Identification of potential issues and security risks
-- **Smart Recommendations**: Actionable suggestions for component optimization
+- **Multi-Repository Support**
+  - GitHub (Cloud & Enterprise)
+  - GitLab (Cloud & Enterprise)
+  - Bitbucket (Cloud & Enterprise)
+  - Azure DevOps
+  - JFrog Artifactory
+
+- **Enterprise Features**
+  - SSL Certificate Verification
+  - SSH Key Authentication
+  - Proxy Support
+  - Custom Enterprise URLs
+
+- **Advanced Security**
+  - Secure Token Storage
+  - SSL Verification Options
+  - SSH Key Management
+  - Proxy Authentication
+
+- **Batch Processing**
+  - Multiple Repository Conversion
+  - Progress Tracking
+  - Error Handling
+  - Batch Templates
+
+- **Analytics Dashboard**
+  - Component Statistics
+  - Conversion Progress
+  - Performance Metrics
+  - Risk Analysis
 
 ## Prerequisites
 
-- Node.js 16.x or later
-- npm 7.x or later
-- macOS (for building the application)
-- ImageMagick (for icon generation)
-- create-dmg (for DMG creation)
+- Node.js (v16 or higher)
+- npm (v7 or higher)
+- Git
+- Access to Salesforce org
+- Repository access tokens/credentials
 
 ## Installation
 
-1. Clone the repository:
-```bash
-git clone https://github.com/rajagrawal104/sf-migration-tool.git
-cd sf-migration-tool
-```
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/yourusername/sf-migration-tool.git
+   cd sf-migration-tool
+   ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+2. **Install Dependencies**
+   ```bash
+   # Install root dependencies
+   npm install
 
-3. Install global dependencies:
-```bash
-npm install -g create-dmg
-```
+   # Install client dependencies
+   cd client
+   npm install
+   cd ..
+   ```
 
-4. Install ImageMagick (macOS):
-```bash
-brew install imagemagick
-```
+3. **Environment Setup**
+   Create a `.env` file in the root directory:
+   ```env
+   PORT=3001
+   NODE_ENV=development
+   ```
 
-## Building the Application
-
-1. Make the build script executable:
-```bash
-chmod +x scripts/build-macos.sh
-```
-
-2. Run the build script:
-```bash
-./scripts/build-macos.sh
-```
-
-The build process will:
-- Create application icons
-- Build the React client
-- Package the server
-- Create a DMG installer
+4. **Build the Application**
+   ```bash
+   npm run build
+   ```
 
 ## Running the Application
 
-### Development Mode
+1. **Development Mode**
+   ```bash
+   npm run dev:full
+   ```
+   This starts both the backend and frontend in development mode.
 
-1. Start the server:
-```bash
-npm run dev
-```
+2. **Production Mode**
+   ```bash
+   # Start the server
+   npm start
 
-2. Start the client (in a new terminal):
-```bash
-cd client
-npm start
-```
+   # In a separate terminal, serve the client
+   cd client
+   npm run serve
+   ```
 
-The application will be available at `http://localhost:3000`
+## Usage
 
-### Production Mode
+1. **Access the Application**
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:3001
 
-1. Run the packaged application:
-```bash
-./dist/aura-lwc-converter
-```
+2. **Connect Repositories**
+   - Click "Add Repository"
+   - Select repository type
+   - Enter credentials and configuration
+   - Click "Add Repository"
+
+3. **Convert Components**
+   - Select repository
+   - Choose components to convert
+   - Start conversion process
+   - Monitor progress in analytics dashboard
 
 ## API Endpoints
 
-### Convert Aura to LWC
-```http
-POST /api/convert
-Content-Type: application/json
-
-{
-  "singleFile": "<aura:component>...</aura:component>"
-}
-```
-
-or
-
-```http
-POST /api/convert
-Content-Type: application/json
-
-{
-  "files": [
-    {
-      "name": "component1",
-      "content": "<aura:component>...</aura:component>"
-    }
-  ]
-}
-```
-
-### Check Server Status
-```http
-GET /api/convert/status
-```
-
-## Complexity Analysis
-
-The tool provides detailed complexity analysis including:
-
-- Basic metrics (attributes, handlers, events, methods)
-- Advanced metrics (iterations, conditionals, expressions)
-- UI complexity (HTML elements, loading states)
-- Advanced features (URL addressable, renderers, client libraries)
-
-### Complexity Levels
-
-- **LOW** (0-10): Simple component with basic functionality
-- **MEDIUM** (11-25): Moderate complexity with some advanced features
-- **HIGH** (26-50): Complex component with many features and interactions
-- **EXTREME** (50+): Very complex component requiring careful review
-
-## Validation Rules
-
-The tool validates:
-
-- Component structure
-- Required attributes
-- Tag matching
-- Value provider usage
-- Controller method usage
-- Object type attribute descriptions
-- Event handler action properties
-- Component complexity scoring
-
-## Example Usage
-
-### Single Component Conversion
-```json
-{
-  "singleFile": "<aura:component>
-    <aura:attribute name=\"message\" type=\"String\"/>
-    <aura:handler name=\"init\" value=\"{!c.doInit}\"/>
-    <div>{!v.message}</div>
-  </aura:component>"
-}
-```
-
-### Multiple Component Conversion
-```json
-{
-  "files": [
-    {
-      "name": "component1",
-      "content": "<aura:component>...</aura:component>"
-    },
-    {
-      "name": "component2",
-      "content": "<aura:component>...</aura:component>"
-    }
-  ]
-}
-```
-
-## Response Format
-
-```json
-{
-  "success": true,
-  "convertedFiles": [
-    {
-      "fileName": "component1",
-      "success": true,
-      "lwcCode": "...",
-      "warnings": [...],
-      "statistics": {
-        "metrics": {...},
-        "weightedScores": {...},
-        "totalWeightedScore": 15,
-        "complexityLevel": "MEDIUM",
-        "riskFactors": [...],
-        "maintainabilityScore": 70,
-        "recommendations": [...]
-      }
-    }
-  ]
-}
-```
+- `POST /api/validate-repo`: Validate repository connection
+- `POST /api/refresh-repo`: Refresh repository data
+- `POST /api/convert-repo`: Convert repository components
+- `POST /api/repo-analytics`: Get repository analytics
+- `POST /api/start-batch`: Start batch processing
+- `POST /api/stop-batch`: Stop batch processing
+- `GET /api/batch-status/:batchId`: Get batch status
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Acknowledgments
+## Support
 
-- Salesforce Lightning Web Components
-- React
-- Express.js
-- Node.js
+For support, please open an issue in the GitHub repository or contact the development team.
